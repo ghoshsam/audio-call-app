@@ -15,7 +15,7 @@ export default function Home() {
     navigator.mediaDevices
       .getUserMedia({ audio: true })
       .then((stream) => {
-        console.log("Stream received from microphone:", stream);
+        console.log("Stream  received from microphone:", stream);
         setStream(stream);
       })
       .catch((error) => {
