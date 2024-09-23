@@ -21,6 +21,12 @@ export default function Home() {
         audio: true,
       })
       .then((stream) => {
+        if (myVideoRef.current) {
+          myVideoRef.current.srcObject = stream;
+          myVideoRef.current.play().catch((error) => {
+            console.error("Error playing video:", error);
+          });
+        }
         setTextMessage(textMessage + "Stream is available");
         setStream(stream);
       })
