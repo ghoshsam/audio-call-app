@@ -11,7 +11,7 @@ export default function Home() {
   const messageQueue = useRef([]);
   const [textMessage, setTextMessage] = useState("");
 
-  const myVideoRef = useRef < HTMLVideoElement > null;
+  const myVideoRef = useRef(null);
 
   useEffect(() => {
     // Get access to the user's microphone
