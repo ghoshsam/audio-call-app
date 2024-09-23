@@ -9,13 +9,14 @@ export default function Home() {
   const socket = useRef(null);
   const userVideo = useRef(null);
   const messageQueue = useRef([]);
+  const [textMessage, setTextMessage] = useState("");
 
   useEffect(() => {
     // Get access to the user's microphone
     navigator.mediaDevices
       .getUserMedia({ audio: true })
       .then((stream) => {
-        console.log("Stream  received from microphone:", stream);
+        setTextMessage(textMessage + "Stream is available");
         setStream(stream);
       })
       .catch((error) => {
@@ -139,12 +140,23 @@ export default function Home() {
   };
 
   return (
-    <div>
-      <h1>Audio Calling App</h1>
-      <button onClick={initiateCall}>Call</button>
-      <button onClick={answerCall}>Answer</button>
+    <div className="flex  h-screen w-full bg-black opacity-50 items-center justify-center">
+      <div className=" min-w-[440px] min-h-[500px] items-center justify-center relative flex flex-col rounded-xl bg-white text-black ">
+        <h1 className="flex flex-1">Audio Calling App</h1>
+        <div className="flex flex-1">{textMessage}</div>
+        <button
+          type="button"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={initiateCall}
+        >
+          Call
+        </button>
+        <button className="" onClick={answerCall}>
+          Answer
+        </button>
 
-      <audio ref={userVideo} autoPlay></audio>
+        <audio ref={userVideo} autoPlay></audio>
+      </div>
     </div>
   );
 }
