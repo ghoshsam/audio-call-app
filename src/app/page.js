@@ -24,7 +24,7 @@ export default function Home() {
 
     // Connect to WebSocket server
     socket.current = new WebSocket(
-      "ws://eager-blinny-aec-demo-project-4fb931d1.koyeb.app/ws/1"
+      "wss://eager-blinny-aec-demo-project-4fb931d1.koyeb.app/ws/1"
     );
 
     socket.current.onopen = () => {
