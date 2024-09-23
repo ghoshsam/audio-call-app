@@ -11,10 +11,15 @@ export default function Home() {
   const messageQueue = useRef([]);
   const [textMessage, setTextMessage] = useState("");
 
+  const myVideoRef = useRef < HTMLVideoElement > null;
+
   useEffect(() => {
     // Get access to the user's microphone
     navigator.mediaDevices
-      .getUserMedia({ audio: true })
+      .getUserMedia({
+        video: true,
+        audio: true,
+      })
       .then((stream) => {
         setTextMessage(textMessage + "Stream is available");
         setStream(stream);
@@ -154,7 +159,9 @@ export default function Home() {
         <button className="" onClick={answerCall}>
           Answer
         </button>
-
+        <div className="flex flex-1">
+          <video className="w-72" playsInline ref={myVideoRef} autoPlay></video>
+        </div>
         <audio ref={userVideo} autoPlay></audio>
       </div>
     </div>
